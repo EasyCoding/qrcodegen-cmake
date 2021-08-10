@@ -1,0 +1,41 @@
+name: GCC CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build project with GCC
+    runs-on: ubuntu-latest
+    steps:
+    - name: Fetching QR-Code-generator sources
+      uses: actions/checkout@v2
+      with:
+        repository: 'nayuki/QR-Code-generator'
+        ref: 'v1.7.0'
+        fetch-depth: 1
+    - name: Fetching qrcodegen-cmake sources
+      uses: actions/checkout@v2
+      with:
+        path: 'qrcodegen-cmake'
+    - name: Copying CMake build files
+      run: |
+        ln -s qrcodegen-cmake/CMakeLists.txt .
+    - name: Updating apt package metadata
+      run: |
+        sudo apt-get update
+    - name: Installing compilers
+      run: |
+        sudo apt-get -y install gcc g++
+    - name: Installing build system
+      run: |
+        sudo apt-get -y install cmake make
+    - name: Creating build directory
+      run: |
+        mkdir build
+    - name: Building with CMake
+      run: |
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS:BOOL=ON
+        cmake --build build
+    - name: Installing project
+      run: |
+        sudo cmake --install build
