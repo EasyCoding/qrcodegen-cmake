@@ -60,9 +60,15 @@ set_property(TARGET qrcodegen PROPERTY VERSION ${CMAKE_PROJECT_VERSION})
 set_property(TARGET qrcodegen PROPERTY SOVERSION 1)
 
 install(TARGETS qrcodegen
+    EXPORT qrcodegen-targets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegen
+)
+
+install(EXPORT qrcodegen-targets
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegen
+    NAMESPACE qrcodegen::
 )
 
 # =========================
@@ -139,9 +145,15 @@ set_property(TARGET qrcodegencpp PROPERTY VERSION ${CMAKE_PROJECT_VERSION})
 set_property(TARGET qrcodegencpp PROPERTY SOVERSION 1)
 
 install(TARGETS qrcodegencpp
+    EXPORT qrcodegencpp-targets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegencpp
+)
+
+install(EXPORT qrcodegencpp-targets
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegencpp
+    NAMESPACE qrcodegencpp::
 )
 
 # ===========================
