@@ -33,6 +33,12 @@ option(BUILD_TESTS "Build and run unit tests" OFF)
 
 include(GNUInstallDirs)
 
+# ============================
+# === CMake config helpers ===
+# ============================
+
+include(CMakePackageConfigHelpers)
+
 # ========================
 # === C library target ===
 # ========================
@@ -64,6 +70,21 @@ install(TARGETS qrcodegen
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegen
+)
+
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config.cmake.in "@PACKAGE_INIT@")
+configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config.cmake.in
+    qrcodegen-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegen
+)
+write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config-version.cmake
+    COMPATIBILITY ExactVersion
+)
+
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegen
 )
 
 install(EXPORT qrcodegen-targets
@@ -149,6 +170,21 @@ install(TARGETS qrcodegencpp
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegencpp
+)
+
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config.cmake.in "@PACKAGE_INIT@")
+configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config.cmake.in
+    qrcodegencpp-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegencpp
+)
+write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config-version.cmake
+    COMPATIBILITY ExactVersion
+)
+
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegencpp
 )
 
 install(EXPORT qrcodegencpp-targets
