@@ -54,6 +54,22 @@ install(TARGETS qrcodegen
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegen
 )
 
+# =========================
+# === C examples target ===
+# =========================
+
+set(QRCODEGENDEMO_SOURCES
+    c/qrcodegen-demo.c
+)
+
+add_executable(qrcodegen-demo
+    ${QRCODEGENDEMO_SOURCES}
+)
+
+target_link_libraries(qrcodegen-demo PRIVATE
+    qrcodegen
+)
+
 # ==========================
 # === C++ library target ===
 # ==========================
