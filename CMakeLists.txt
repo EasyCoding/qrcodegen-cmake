@@ -22,9 +22,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(GNUInstallDirs)
 
-# ================
-# === C target ===
-# ================
+# ========================
+# === C library target ===
+# ========================
 
 set(QRCODEGEN_SOURCES
     c/qrcodegen.c
@@ -54,9 +54,9 @@ install(TARGETS qrcodegen
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegen
 )
 
-# ==================
-# === C++ target ===
-# ==================
+# ==========================
+# === C++ library target ===
+# ==========================
 
 set(QRCODEGENCPP_SOURCES
     cpp/qrcodegen.cpp
