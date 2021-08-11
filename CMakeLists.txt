@@ -4,6 +4,10 @@
 # SPDX-License-Identifier: MIT
 #
 
+# ==============================
+# === Project initialization ===
+# ==============================
+
 cmake_minimum_required(VERSION 3.12)
 
 project(QR-Code-generator
@@ -17,14 +21,20 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # =======================
+# === Project options ===
+# =======================
+
+option(BUILD_EXAMPLES "Build examples and demos" OFF)
+
+# =======================
 # === Paths detection ===
 # =======================
 
 include(GNUInstallDirs)
 
-# ================
-# === C target ===
-# ================
+# ========================
+# === C library target ===
+# ========================
 
 set(QRCODEGEN_SOURCES
     c/qrcodegen.c
@@ -54,9 +64,27 @@ install(TARGETS qrcodegen
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegen
 )
 
-# ==================
-# === C++ target ===
-# ==================
+# =========================
+# === C examples target ===
+# =========================
+
+if(BUILD_EXAMPLES)
+    set(QRCODEGENDEMO_SOURCES
+        c/qrcodegen-demo.c
+    )
+
+    add_executable(qrcodegen-demo
+        ${QRCODEGENDEMO_SOURCES}
+    )
+
+    target_link_libraries(qrcodegen-demo PRIVATE
+        qrcodegen
+    )
+endif()
+
+# ==========================
+# === C++ library target ===
+# ==========================
 
 set(QRCODEGENCPP_SOURCES
     cpp/qrcodegen.cpp
@@ -85,3 +113,21 @@ install(TARGETS qrcodegencpp
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegencpp
 )
+
+# ===========================
+# === C++ examples target ===
+# ===========================
+
+if(BUILD_EXAMPLES)
+    set(QRCODEGENCPPDEMO_SOURCES
+        cpp/QrCodeGeneratorDemo.cpp
+    )
+
+    add_executable(qrcodegencpp-demo
+        ${QRCODEGENCPPDEMO_SOURCES}
+    )
+
+    target_link_libraries(qrcodegencpp-demo PRIVATE
+        qrcodegencpp
+    )
+endif()
