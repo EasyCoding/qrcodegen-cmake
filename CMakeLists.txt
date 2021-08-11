@@ -4,6 +4,10 @@
 # SPDX-License-Identifier: MIT
 #
 
+# ==============================
+# === Project initialization ===
+# ==============================
+
 cmake_minimum_required(VERSION 3.12)
 
 project(QR-Code-generator
@@ -15,6 +19,12 @@ project(QR-Code-generator
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# =======================
+# === Project options ===
+# =======================
+
+option(BUILD_EXAMPLES "Build examples and demos" OFF)
 
 # =======================
 # === Paths detection ===
@@ -58,17 +68,19 @@ install(TARGETS qrcodegen
 # === C examples target ===
 # =========================
 
-set(QRCODEGENDEMO_SOURCES
-    c/qrcodegen-demo.c
-)
+if(BUILD_EXAMPLES)
+    set(QRCODEGENDEMO_SOURCES
+        c/qrcodegen-demo.c
+    )
 
-add_executable(qrcodegen-demo
-    ${QRCODEGENDEMO_SOURCES}
-)
+    add_executable(qrcodegen-demo
+        ${QRCODEGENDEMO_SOURCES}
+    )
 
-target_link_libraries(qrcodegen-demo PRIVATE
-    qrcodegen
-)
+    target_link_libraries(qrcodegen-demo PRIVATE
+        qrcodegen
+    )
+endif()
 
 # ==========================
 # === C++ library target ===
@@ -106,14 +118,16 @@ install(TARGETS qrcodegencpp
 # === C++ examples target ===
 # ===========================
 
-set(QRCODEGENCPPDEMO_SOURCES
-    cpp/QrCodeGeneratorDemo.cpp
-)
+if(BUILD_EXAMPLES)
+    set(QRCODEGENCPPDEMO_SOURCES
+        cpp/QrCodeGeneratorDemo.cpp
+    )
 
-add_executable(qrcodegencpp-demo
-    ${QRCODEGENCPPDEMO_SOURCES}
-)
+    add_executable(qrcodegencpp-demo
+        ${QRCODEGENCPPDEMO_SOURCES}
+    )
 
-target_link_libraries(qrcodegencpp-demo PRIVATE
-    qrcodegencpp
-)
+    target_link_libraries(qrcodegencpp-demo PRIVATE
+        qrcodegencpp
+    )
+endif()
