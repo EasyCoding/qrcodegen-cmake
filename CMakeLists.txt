@@ -101,3 +101,19 @@ install(TARGETS qrcodegencpp
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegencpp
 )
+
+# ===========================
+# === C++ examples target ===
+# ===========================
+
+set(QRCODEGENCPPDEMO_SOURCES
+    cpp/QrCodeGeneratorDemo.cpp
+)
+
+add_executable(qrcodegencpp-demo
+    ${QRCODEGENCPPDEMO_SOURCES}
+)
+
+target_link_libraries(qrcodegencpp-demo PRIVATE
+    qrcodegencpp
+)
