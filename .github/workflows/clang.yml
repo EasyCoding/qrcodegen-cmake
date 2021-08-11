@@ -37,8 +37,13 @@ jobs:
         mkdir build
     - name: Building with CMake
       run: |
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS:BOOL=ON -DBUILD_EXAMPLES:BOOL=ON
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS:BOOL=ON -DBUILD_EXAMPLES:BOOL=ON -DBUILD_TESTS:BOOL=ON
         cmake --build build
+    - name: Running unit tests with CTest
+      run: |
+        pushd build
+        ctest --output-on-failure
+        popd
     - name: Installing project
       run: |
         sudo cmake --install build

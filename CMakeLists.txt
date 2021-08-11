@@ -25,6 +25,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # =======================
 
 option(BUILD_EXAMPLES "Build examples and demos" OFF)
+option(BUILD_TESTS "Build and run unit tests" OFF)
 
 # =======================
 # === Paths detection ===
@@ -82,6 +83,35 @@ if(BUILD_EXAMPLES)
     )
 endif()
 
+# ======================
+# === C tests target ===
+# ======================
+
+if (BUILD_TESTS)
+    set(QRCODEGENTEST_SOURCES
+        c/qrcodegen-test.c
+    )
+
+    add_library(qrcodegen-testable OBJECT
+        ${QRCODEGEN_SOURCES}
+        ${QRCODEGEN_HEADERS}
+    )
+
+    target_compile_options(qrcodegen-testable PUBLIC
+        -DQRCODEGEN_TEST
+    )
+
+    add_executable(qrcodegen-test
+        ${QRCODEGENTEST_SOURCES}
+    )
+
+    target_link_libraries(qrcodegen-test PRIVATE
+        qrcodegen-testable
+    )
+
+    add_test(NAME qrcodegen-test COMMAND qrcodegen-test)
+endif()
+
 # ==========================
 # === C++ library target ===
 # ==========================
@@ -130,4 +160,12 @@ if(BUILD_EXAMPLES)
     target_link_libraries(qrcodegencpp-demo PRIVATE
         qrcodegencpp
     )
+endif()
+
+# ====================
+# === Tests export ===
+# ====================
+
+if (BUILD_TESTS)
+    enable_testing()
 endif()
