@@ -143,6 +143,8 @@ endif()
 # === C++ library target ===
 # ==========================
 
+set(QRCODEGENCPP_NAME "qrcodegencpp")
+
 set(QRCODEGENCPP_SOURCES
     cpp/qrcodegen.cpp
 )
@@ -151,45 +153,45 @@ set(QRCODEGENCPP_HEADERS
     cpp/qrcodegen.hpp
 )
 
-add_library(qrcodegencpp
+add_library(${QRCODEGENCPP_NAME}
     ${QRCODEGENCPP_SOURCES}
     ${QRCODEGENCPP_HEADERS}
 )
 
-target_include_directories(qrcodegencpp PUBLIC
+target_include_directories(${QRCODEGENCPP_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/cpp>
-    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/qrcodegencpp>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${QRCODEGENCPP_NAME}>
 )
 
-set_property(TARGET qrcodegencpp PROPERTY PUBLIC_HEADER ${QRCODEGENCPP_HEADERS})
-set_property(TARGET qrcodegencpp PROPERTY VERSION ${CMAKE_PROJECT_VERSION})
-set_property(TARGET qrcodegencpp PROPERTY SOVERSION 1)
+set_property(TARGET ${QRCODEGENCPP_NAME} PROPERTY PUBLIC_HEADER ${QRCODEGENCPP_HEADERS})
+set_property(TARGET ${QRCODEGENCPP_NAME} PROPERTY VERSION ${CMAKE_PROJECT_VERSION})
+set_property(TARGET ${QRCODEGENCPP_NAME} PROPERTY SOVERSION 1)
 
-install(TARGETS qrcodegencpp
-    EXPORT qrcodegencpp-targets
+install(TARGETS ${QRCODEGENCPP_NAME}
+    EXPORT ${QRCODEGENCPP_NAME}-targets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegencpp
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${QRCODEGENCPP_NAME}
 )
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config.cmake.in "@PACKAGE_INIT@")
-configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config.cmake.in
-    qrcodegencpp-config.cmake
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegencpp
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}-config.cmake.in "@PACKAGE_INIT@")
+configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}-config.cmake.in
+    ${QRCODEGENCPP_NAME}-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGENCPP_NAME}
 )
-write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config-version.cmake
+write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}-config-version.cmake
     COMPATIBILITY ExactVersion
 )
 
 install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config-version.cmake
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegencpp
+    ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGENCPP_NAME}
 )
 
-install(EXPORT qrcodegencpp-targets
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegencpp
-    NAMESPACE qrcodegencpp::
+install(EXPORT ${QRCODEGENCPP_NAME}-targets
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGENCPP_NAME}
+    NAMESPACE ${QRCODEGENCPP_NAME}::
 )
 
 # ===========================
@@ -201,12 +203,12 @@ if(BUILD_EXAMPLES)
         cpp/QrCodeGeneratorDemo.cpp
     )
 
-    add_executable(qrcodegencpp-demo
+    add_executable(${QRCODEGENCPP_NAME}-demo
         ${QRCODEGENCPPDEMO_SOURCES}
     )
 
-    target_link_libraries(qrcodegencpp-demo PRIVATE
-        qrcodegencpp
+    target_link_libraries(${QRCODEGENCPP_NAME}-demo PRIVATE
+        ${QRCODEGENCPP_NAME}
     )
 endif()
 
