@@ -94,6 +94,27 @@ install(EXPORT ${QRCODEGEN_NAME}-targets
     NAMESPACE ${QRCODEGEN_NAME}::
 )
 
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}.pc.in "prefix=@CMAKE_INSTALL_PREFIX@\n\
+exec_prefix=\${prefix}\n\
+libdir=\${prefix}/@CMAKE_INSTALL_LIBDIR@\n\
+includedir=\${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/@QRCODEGEN_NAME@\n\
+\n\
+Name: @QRCODEGEN_NAME@\n\
+Description: @CMAKE_PROJECT_DESCRIPTION@\n\
+Version: @CMAKE_PROJECT_VERSION@\n\
+\n\
+Libs: -L\${libdir} -l@QRCODEGEN_NAME@\n\
+Cflags: -I\${includedir}")
+configure_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}.pc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}.pc
+    @ONLY
+)
+
+install(FILES
+    ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}.pc
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+)
+
 # =========================
 # === C examples target ===
 # =========================
