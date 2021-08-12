@@ -43,6 +43,8 @@ include(CMakePackageConfigHelpers)
 # === C library target ===
 # ========================
 
+set(QRCODEGEN_NAME "qrcodegen")
+
 set(QRCODEGEN_SOURCES
     c/qrcodegen.c
 )
@@ -51,45 +53,45 @@ set(QRCODEGEN_HEADERS
     c/qrcodegen.h
 )
 
-add_library(qrcodegen
+add_library(${QRCODEGEN_NAME}
     ${QRCODEGEN_SOURCES}
     ${QRCODEGEN_HEADERS}
 )
 
-target_include_directories(qrcodegen PUBLIC
+target_include_directories(${QRCODEGEN_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/c>
-    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/qrcodegen>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${QRCODEGEN_NAME}>
 )
 
-set_property(TARGET qrcodegen PROPERTY PUBLIC_HEADER ${QRCODEGEN_HEADERS})
-set_property(TARGET qrcodegen PROPERTY VERSION ${CMAKE_PROJECT_VERSION})
-set_property(TARGET qrcodegen PROPERTY SOVERSION 1)
+set_property(TARGET ${QRCODEGEN_NAME} PROPERTY PUBLIC_HEADER ${QRCODEGEN_HEADERS})
+set_property(TARGET ${QRCODEGEN_NAME} PROPERTY VERSION ${CMAKE_PROJECT_VERSION})
+set_property(TARGET ${QRCODEGEN_NAME} PROPERTY SOVERSION 1)
 
-install(TARGETS qrcodegen
-    EXPORT qrcodegen-targets
+install(TARGETS ${QRCODEGEN_NAME}
+    EXPORT ${QRCODEGEN_NAME}-targets
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qrcodegen
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${QRCODEGEN_NAME}
 )
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config.cmake.in "@PACKAGE_INIT@")
-configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config.cmake.in
-    qrcodegen-config.cmake
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegen
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}-config.cmake.in "@PACKAGE_INIT@")
+configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}-config.cmake.in
+    ${QRCODEGEN_NAME}-config.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGEN_NAME}
 )
-write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config-version.cmake
+write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}-config-version.cmake
     COMPATIBILITY ExactVersion
 )
 
 install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/qrcodegen-config-version.cmake
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegen
+    ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}-config.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}-config-version.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGEN_NAME}
 )
 
-install(EXPORT qrcodegen-targets
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/qrcodegen
-    NAMESPACE qrcodegen::
+install(EXPORT ${QRCODEGEN_NAME}-targets
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGEN_NAME}
+    NAMESPACE ${QRCODEGEN_NAME}::
 )
 
 # =========================
@@ -101,12 +103,12 @@ if(BUILD_EXAMPLES)
         c/qrcodegen-demo.c
     )
 
-    add_executable(qrcodegen-demo
+    add_executable(${QRCODEGEN_NAME}-demo
         ${QRCODEGENDEMO_SOURCES}
     )
 
-    target_link_libraries(qrcodegen-demo PRIVATE
-        qrcodegen
+    target_link_libraries(${QRCODEGEN_NAME}-demo PRIVATE
+        ${QRCODEGEN_NAME}
     )
 endif()
 
@@ -119,24 +121,24 @@ if (BUILD_TESTS)
         c/qrcodegen-test.c
     )
 
-    add_library(qrcodegen-testable OBJECT
+    add_library(${QRCODEGEN_NAME}-testable OBJECT
         ${QRCODEGEN_SOURCES}
         ${QRCODEGEN_HEADERS}
     )
 
-    target_compile_options(qrcodegen-testable PUBLIC
+    target_compile_options(${QRCODEGEN_NAME}-testable PUBLIC
         -DQRCODEGEN_TEST
     )
 
-    add_executable(qrcodegen-test
+    add_executable(${QRCODEGEN_NAME}-test
         ${QRCODEGENTEST_SOURCES}
     )
 
-    target_link_libraries(qrcodegen-test PRIVATE
-        qrcodegen-testable
+    target_link_libraries(${QRCODEGEN_NAME}-test PRIVATE
+        ${QRCODEGEN_NAME}-testable
     )
 
-    add_test(NAME qrcodegen-test COMMAND qrcodegen-test)
+    add_test(NAME ${QRCODEGEN_NAME}-test COMMAND ${QRCODEGEN_NAME}-test)
 endif()
 
 # ==========================
