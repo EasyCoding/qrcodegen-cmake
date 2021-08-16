@@ -17,7 +17,7 @@ CMake build scripts for the [QR-Code-generator library](https://github.com/nayuk
 ```
 git clone https://github.com/nayuki/QR-Code-generator.git qrcodegen
 git clone https://github.com/EasyCoding/qrcodegen-cmake.git qrcodegen-cmake
-cp -f qrcodegen-cmake/CMakeLists.txt qrcodegen/
+ln -s ../qrcodegen-cmake/CMakeLists.txt qrcodegen/
 mkdir -p qrcodegen/build
 cd qrcodegen/build
 cmake ..
