@@ -94,18 +94,7 @@ install(EXPORT ${QRCODEGEN_NAME}-targets
     NAMESPACE ${QRCODEGEN_NAME}::
 )
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}.pc.in "prefix=@CMAKE_INSTALL_PREFIX@\n\
-exec_prefix=\${prefix}\n\
-libdir=\${prefix}/@CMAKE_INSTALL_LIBDIR@\n\
-includedir=\${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/@QRCODEGEN_NAME@\n\
-\n\
-Name: @QRCODEGEN_NAME@\n\
-Description: @CMAKE_PROJECT_DESCRIPTION@\n\
-Version: @CMAKE_PROJECT_VERSION@\n\
-\n\
-Libs: -L\${libdir} -l@QRCODEGEN_NAME@\n\
-Cflags: -I\${includedir}")
-configure_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}.pc.in
+configure_file(cmake/${QRCODEGEN_NAME}.pc.in
     ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}.pc
     @ONLY
 )
@@ -217,18 +206,7 @@ install(EXPORT ${QRCODEGENCPP_NAME}-targets
     NAMESPACE ${QRCODEGENCPP_NAME}::
 )
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}.pc.in "prefix=@CMAKE_INSTALL_PREFIX@\n\
-exec_prefix=\${prefix}\n\
-libdir=\${prefix}/@CMAKE_INSTALL_LIBDIR@\n\
-includedir=\${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/@QRCODEGENCPP_NAME@\n\
-\n\
-Name: @QRCODEGENCPP_NAME@\n\
-Description: @CMAKE_PROJECT_DESCRIPTION@\n\
-Version: @CMAKE_PROJECT_VERSION@\n\
-\n\
-Libs: -L\${libdir} -l@QRCODEGENCPP_NAME@\n\
-Cflags: -I\${includedir}")
-configure_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}.pc.in
+configure_file(cmake/${QRCODEGENCPP_NAME}.pc.in
     ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}.pc
     @ONLY
 )
