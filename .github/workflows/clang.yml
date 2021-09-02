@@ -28,6 +28,7 @@ jobs:
         path: 'qrcodegen-cmake'
     - name: Copying CMake build files
       run: |
+        ln -s qrcodegen-cmake/cmake .
         ln -s qrcodegen-cmake/CMakeLists.txt .
     - name: Updating apt package metadata
       run: |

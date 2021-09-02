@@ -17,16 +17,14 @@ CMake build scripts for the [QR-Code-generator library](https://github.com/nayuk
 ```
 git clone https://github.com/nayuki/QR-Code-generator.git qrcodegen
 git clone https://github.com/EasyCoding/qrcodegen-cmake.git qrcodegen-cmake
-ln -s ../qrcodegen-cmake/CMakeLists.txt qrcodegen/
-mkdir -p qrcodegen/build
-cd qrcodegen/build
-cmake ..
-cmake --build .
+ln -s ../qrcodegen-cmake/{cmake,CMakeLists.txt} qrcodegen/
+mkdir -p qrcodegen-build
+cmake -S qrcodegen -B qrcodegen-build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS:BOOL=ON -DBUILD_EXAMPLES:BOOL=ON -DBUILD_TESTS:BOOL=ON
+cmake --build qrcodegen-build
 ```
 
 ## Install with CMake
 
 ```
-cd qrcodegen/build
-sudo cmake --install .
+sudo cmake --install qrcodegen-build
 ```
