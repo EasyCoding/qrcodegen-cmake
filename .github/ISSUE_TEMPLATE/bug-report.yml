@@ -1,0 +1,88 @@
+#
+# SPDX-FileCopyrightText: 2021-2022 EasyCoding Team and contributors
+#
+# SPDX-License-Identifier: MIT
+#
+
+name: Bug report
+description: Create a new bug report ticket
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: Problem details
+      description: >-
+        Please describe the issue.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: >-
+        Please provide steps how to reproduce this bug.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: >-
+        Tell us what should happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual behavior
+      description: >-
+        Tell us what happens instead.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Project version
+      description: >-
+        Please specify QR-Code-generator version.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: OS name and version
+      description: >
+        Please specify OS name and version.
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: C/C++ compiler
+      multiple: false
+      options:
+        - GCC
+        - Clang
+        - MSVC
+        - Other
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Compiler version
+      description: >
+        Please specify compiler version.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: CMake version
+      description: >
+        Please specify CMake version.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Logs
+      placeholder: Please add here any useful logs you want to share with developers.
+      render: text
+    validations:
+      required: false
