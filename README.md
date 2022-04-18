@@ -1,8 +1,7 @@
 # CMake for the QR-Code-generator
 
 [![GitHub version](https://img.shields.io/github/v/release/EasyCoding/qrcodegen-cmake?sort=semver&color=brightgreen&logo=git&logoColor=white)](https://github.com/EasyCoding/qrcodegen-cmake/releases)
-[![GCC CI status](https://github.com/EasyCoding/qrcodegen-cmake/actions/workflows/gcc.yml/badge.svg)](https://github.com/EasyCoding/qrcodegen-cmake/actions/workflows/gcc.yml)
-[![Clang CI status](https://github.com/EasyCoding/qrcodegen-cmake/actions/workflows/clang.yml/badge.svg)](https://github.com/EasyCoding/qrcodegen-cmake/actions/workflows/clang.yml)
+[![Linux CI status](https://github.com/EasyCoding/qrcodegen-cmake/actions/workflows/linux.yml/badge.svg)](https://github.com/EasyCoding/qrcodegen-cmake/actions/workflows/linux.yml)
 [![GitHub issues](https://img.shields.io/github/issues/EasyCoding/qrcodegen-cmake?logo=github&logoColor=white)](https://github.com/EasyCoding/qrcodegen-cmake/issues)
 [![GitHub stars](https://img.shields.io/github/stars/EasyCoding/qrcodegen-cmake?logo=github&logoColor=white)](https://github.com/EasyCoding/qrcodegen-cmake/stargazers)
 [![License](https://img.shields.io/github/license/EasyCoding/qrcodegen-cmake?logo=files&logoColor=white)](LICENSE)
