@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: 'nayuki/QR-Code-generator'
-        ref: 'v1.7.0'
+        ref: 'v1.8.0'
         fetch-depth: 1
     - name: Fetching qrcodegen-cmake sources
       uses: actions/checkout@v2

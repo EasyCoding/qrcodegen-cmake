@@ -11,7 +11,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 project(QR-Code-generator
-    VERSION 1.7.0
+    VERSION 1.8.0
     DESCRIPTION "High-quality QR Code generator library in Java, TypeScript/JavaScript, Python, C++, C, Rust"
     HOMEPAGE_URL "https://www.nayuki.io/page/qr-code-generator-library"
     LANGUAGES C CXX
