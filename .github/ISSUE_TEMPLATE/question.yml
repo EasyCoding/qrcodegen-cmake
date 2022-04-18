@@ -1,0 +1,16 @@
+#
+# SPDX-FileCopyrightText: 2021-2022 EasyCoding Team and contributors
+#
+# SPDX-License-Identifier: MIT
+#
+
+name: Question
+description: Ask a question about the project
+labels: [question]
+body:
+  - type: textarea
+    attributes:
+      label: Question
+      placeholder: Ask a question about the project here.
+    validations:
+      required: true
