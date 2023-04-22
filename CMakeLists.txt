@@ -74,15 +74,7 @@ install(TARGETS ${QRCODEGEN_NAME}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${QRCODEGEN_NAME}
 )
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}-config.cmake.in [=[
-@PACKAGE_INIT@
-
-include("${CMAKE_CURRENT_LIST_DIR}/qrcodegen-targets.cmake")
-
-check_required_components(qrcodegen)
-]=]
-)
-configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}-config.cmake.in
+configure_package_config_file(cmake/${QRCODEGEN_NAME}-config.cmake.in
     ${QRCODEGEN_NAME}-config.cmake
     INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGEN_NAME}
 )
@@ -193,15 +185,7 @@ install(TARGETS ${QRCODEGENCPP_NAME}
     PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${QRCODEGENCPP_NAME}
 )
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/qrcodegencpp-config.cmake.in [=[
-@PACKAGE_INIT@
-
-include("${CMAKE_CURRENT_LIST_DIR}/qrcodegencpp-targets.cmake")
-
-check_required_components(qrcodegencpp)
-]=]
-)
-configure_package_config_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}-config.cmake.in
+configure_package_config_file(cmake/${QRCODEGENCPP_NAME}-config.cmake.in
     ${QRCODEGENCPP_NAME}-config.cmake
     INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGENCPP_NAME}
 )
