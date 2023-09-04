@@ -31,13 +31,13 @@ jobs:
             cxx: 'g++'
     steps:
     - name: Fetching QR-Code-generator sources
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: 'nayuki/QR-Code-generator'
         ref: 'v1.8.0'
         fetch-depth: 1
     - name: Fetching qrcodegen-cmake sources
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         path: 'qrcodegen-cmake'
     - name: Copying CMake build files
