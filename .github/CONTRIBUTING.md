@@ -52,7 +52,7 @@ Don't forget to sign off your work by using `git commit -s`:
 Signed-off-by: Name Surname <username@example.org>
 ```
 
-We cannot accept pull requests with commits without this signature.
+We cannot accept pull requests with unsigned commits. We need this to upstream our work in the future.
 
 ### Some important warnings
 
