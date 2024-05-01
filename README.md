@@ -1,17 +1,17 @@
 # CMake for the QR-Code-generator
 
-[![GitHub version](https://img.shields.io/github/v/release/EasyCoding/qrcodegen-cmake?sort=semver&color=brightgreen&logo=git&logoColor=white)](https://github.com/EasyCoding/qrcodegen-cmake/releases)
-[![Linux CI status](https://github.com/EasyCoding/qrcodegen-cmake/actions/workflows/linux.yml/badge.svg)](https://github.com/EasyCoding/qrcodegen-cmake/actions/workflows/linux.yml)
-[![GitHub issues](https://img.shields.io/github/issues/EasyCoding/qrcodegen-cmake?logo=github&logoColor=white)](https://github.com/EasyCoding/qrcodegen-cmake/issues)
-[![GitHub stars](https://img.shields.io/github/stars/EasyCoding/qrcodegen-cmake?logo=github&logoColor=white)](https://github.com/EasyCoding/qrcodegen-cmake/stargazers)
-[![License](https://img.shields.io/github/license/EasyCoding/qrcodegen-cmake?logo=files&logoColor=white)](LICENSE)
----
-
 ## About
 
 CMake build scripts for the [QR-Code-generator library](https://github.com/nayuki/QR-Code-generator).
 
-## Build with CMake
+## Building with CMake
+
+Available configuration options:
+
+  * `BUILD_EXAMPLES` - build examples.
+  * `BUILD_TESTS` - build tests.
+
+Clone the upstream repository, create the necessary symlinks and start the build process:
 
 ```
 git clone https://github.com/nayuki/QR-Code-generator.git qrcodegen
@@ -22,7 +22,9 @@ cmake -S qrcodegen -B qrcodegen-build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_
 cmake --build qrcodegen-build
 ```
 
-## Install with CMake
+## Installing with CMake
+
+Install the entire library:
 
 ```
 sudo cmake --install qrcodegen-build
@@ -31,4 +33,20 @@ sudo cmake --install qrcodegen-build
 Install only one library flavor (either C or C++ respectively):
 ```
 sudo cmake --install qrcodegen-build --component {qrcodegen|qrcodegencpp}
+```
+
+## Running tests
+
+Run tests on modern CMake versions (3.20 or higher):
+
+```
+ctest --test-dir qrcodegen-build --output-on-failure
+```
+
+Run tests on older CMake versions:
+
+```
+pushd qrcodegen-build
+ctest --output-on-failure
+popd
 ```
