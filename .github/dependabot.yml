@@ -1,5 +1,5 @@
 #
-# SPDX-FileCopyrightText: 2021-2023 EasyCoding Team and contributors
+# SPDX-FileCopyrightText: 2021-2024 EasyCoding Team and contributors
 #
 # SPDX-License-Identifier: MIT
 #
