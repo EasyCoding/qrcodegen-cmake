@@ -111,7 +111,7 @@ install(FILES
 # === C examples target ===
 # =========================
 
-if(BUILD_EXAMPLES)
+if (BUILD_EXAMPLES)
     set(QRCODEGENDEMO_SOURCES
         c/qrcodegen-demo.c
     )
@@ -226,7 +226,7 @@ install(FILES
 # === C++ examples target ===
 # ===========================
 
-if(BUILD_EXAMPLES)
+if (BUILD_EXAMPLES)
     set(QRCODEGENCPPDEMO_SOURCES
         cpp/QrCodeGeneratorDemo.cpp
     )
