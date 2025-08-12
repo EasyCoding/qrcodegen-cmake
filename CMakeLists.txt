@@ -26,8 +26,8 @@ set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 # === Project options ===
 # =======================
 
-option(BUILD_EXAMPLES "Build examples and demos" OFF)
-option(BUILD_TESTS "Build and run unit tests" OFF)
+option(QRCODEGEN_BUILD_EXAMPLES "Build examples and demos." OFF)
+option(QRCODEGEN_BUILD_TESTS "Build and run unit tests." OFF)
 
 # =======================
 # === Paths detection ===
@@ -113,7 +113,7 @@ install(FILES
 # === C examples target ===
 # =========================
 
-if (BUILD_EXAMPLES)
+if (QRCODEGEN_BUILD_EXAMPLES)
     set(QRCODEGENDEMO_SOURCES
         c/qrcodegen-demo.c
     )
@@ -131,7 +131,7 @@ endif()
 # === C tests target ===
 # ======================
 
-if (BUILD_TESTS)
+if (QRCODEGEN_BUILD_TESTS)
     set(QRCODEGENTEST_SOURCES
         c/qrcodegen-test.c
     )
@@ -228,7 +228,7 @@ install(FILES
 # === C++ examples target ===
 # ===========================
 
-if (BUILD_EXAMPLES)
+if (QRCODEGEN_BUILD_EXAMPLES)
     set(QRCODEGENCPPDEMO_SOURCES
         cpp/QrCodeGeneratorDemo.cpp
     )
@@ -246,6 +246,6 @@ endif()
 # === Tests export ===
 # ====================
 
-if (BUILD_TESTS)
+if (QRCODEGEN_BUILD_TESTS)
     enable_testing()
 endif()

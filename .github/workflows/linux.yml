@@ -62,8 +62,8 @@ jobs:
             -DCMAKE_INSTALL_PREFIX:PATH=/usr \
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
             -DBUILD_SHARED_LIBS:BOOL=ON \
-            -DBUILD_EXAMPLES:BOOL=ON \
-            -DBUILD_TESTS:BOOL=ON
+            -DQRCODEGEN_BUILD_EXAMPLES:BOOL=ON \
+            -DQRCODEGEN_BUILD_TESTS:BOOL=ON
         cmake --build build
       env:
         CFLAGS: -O2 -fexceptions -pipe -Wall -Wextra -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fPIC -fstack-protector-strong -fasynchronous-unwind-tables -fcf-protection
