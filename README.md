@@ -8,8 +8,8 @@ CMake build scripts for the [QR-Code-generator library](https://github.com/nayuk
 
 Available configuration options:
 
-  * `BUILD_EXAMPLES` - build examples.
-  * `BUILD_TESTS` - build tests.
+  * `QRCODEGEN_BUILD_EXAMPLES` - build examples.
+  * `QRCODEGEN_BUILD_TESTS` - build tests.
 
 Clone the upstream repository, create the necessary symlinks and start the build process:
 
@@ -18,7 +18,7 @@ git clone https://github.com/nayuki/QR-Code-generator.git qrcodegen
 git clone https://github.com/EasyCoding/qrcodegen-cmake.git qrcodegen-cmake
 ln -s ../qrcodegen-cmake/{cmake,CMakeLists.txt} qrcodegen/
 mkdir -p qrcodegen-build
-cmake -S qrcodegen -B qrcodegen-build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS:BOOL=ON -DBUILD_EXAMPLES:BOOL=ON -DBUILD_TESTS:BOOL=ON
+cmake -S qrcodegen -B qrcodegen-build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS:BOOL=ON -DQRCODEGEN_BUILD_EXAMPLES:BOOL=ON -DQRCODEGEN_BUILD_TESTS:BOOL=ON
 cmake --build qrcodegen-build
 ```
 
