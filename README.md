@@ -30,23 +30,15 @@ Install the entire library:
 sudo cmake --install qrcodegen-build
 ```
 
-Install only one library flavor (either C or C++ respectively; requires CMake 3.15 or above):
+Install only one library flavor (either C or C++ respectively):
 ```
 sudo cmake --install qrcodegen-build --component {qrcodegen|qrcodegencpp}
 ```
 
 ## Running tests
 
-Run tests on modern CMake versions (3.20 or higher):
+Run unit tests:
 
 ```
 ctest --test-dir qrcodegen-build --output-on-failure
-```
-
-Run tests on older CMake versions:
-
-```
-pushd qrcodegen-build
-ctest --output-on-failure
-popd
 ```
