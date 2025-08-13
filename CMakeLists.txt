@@ -8,7 +8,7 @@
 # === Project initialization ===
 # ==============================
 
-cmake_minimum_required(VERSION 3.12...4.0)
+cmake_minimum_required(VERSION 3.20...4.0)
 
 project(QR-Code-generator
     VERSION 1.8.0
