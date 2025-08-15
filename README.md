@@ -10,8 +10,8 @@ This project supports the following build-time configuration options, which can 
 
 | Name | Description | Default |
 | ------- | ------- | ------- |
-| QRCODEGEN_BUILD_EXAMPLES | Build examples. | OFF |
-| QRCODEGEN_BUILD_TESTS | Build unit tests. | OFF |
+| QRCODEGEN_BUILD_EXAMPLES | Build examples and demos. | OFF |
+| QRCODEGEN_BUILD_TESTS | Build and run unit tests. | OFF |
 
 ## Building with CMake
 
