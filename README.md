@@ -4,7 +4,7 @@
 
 CMake build scripts for the [QR-Code-generator library](https://github.com/nayuki/QR-Code-generator).
 
-## Configuration options
+## CMake configuration options
 
 This project supports the following build-time configuration options, which can be enabled or disabled using `-DOPTION_NAME=ON/OFF`:
 
@@ -39,7 +39,7 @@ Install only one library flavor (either C or C++ respectively):
 sudo cmake --install qrcodegen-build --component {qrcodegen|qrcodegencpp}
 ```
 
-## Running tests
+## Running tests with CTest
 
 Run unit tests:
 
