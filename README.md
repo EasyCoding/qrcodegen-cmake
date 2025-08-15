@@ -4,12 +4,16 @@
 
 CMake build scripts for the [QR-Code-generator library](https://github.com/nayuki/QR-Code-generator).
 
+## Configuration options
+
+This project supports the following build-time configuration options, which can be enabled or disabled using `-DOPTION_NAME=ON/OFF`:
+
+| Name | Description | Default |
+| ------- | ------- | ------- |
+| QRCODEGEN_BUILD_EXAMPLES | Build examples. | OFF |
+| QRCODEGEN_BUILD_TESTS | Build unit tests. | OFF |
+
 ## Building with CMake
-
-Available configuration options:
-
-  * `QRCODEGEN_BUILD_EXAMPLES` - build examples.
-  * `QRCODEGEN_BUILD_TESTS` - build tests.
 
 Clone the upstream repository, create the necessary symlinks and start the build process:
 
