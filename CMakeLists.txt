@@ -82,6 +82,7 @@ configure_package_config_file(cmake/${QRCODEGEN_NAME}-config.cmake.in
     ${QRCODEGEN_NAME}-config.cmake
     INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGEN_NAME}
 )
+
 write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGEN_NAME}-config-version.cmake
     COMPATIBILITY ExactVersion
 )
@@ -199,6 +200,7 @@ configure_package_config_file(cmake/${QRCODEGENCPP_NAME}-config.cmake.in
     ${QRCODEGENCPP_NAME}-config.cmake
     INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QRCODEGENCPP_NAME}
 )
+
 write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/${QRCODEGENCPP_NAME}-config-version.cmake
     COMPATIBILITY ExactVersion
 )
